@@ -606,10 +606,11 @@ window.openSnapshotGallery = function(startIndex){
 <div class="video-modal-container">
 <button class="video-modal-close" onclick="closeVideoModal()">×</button>
 <div class="video-modal-content">
-<video controls="" id="surveyVideo" style="max-width:90vw; max-height:80vh;">
+<video controls="" id="surveyVideo" poster="images/land-survey-poster.jpg" style="max-width:90vw; max-height:80vh;">
 <source src="" type="video/mp4"/>
         Your browser does not support the video tag.
       </video>
+<a href="#" id="video-open-tab" style="display:block;margin-top:8px;text-align:center;color:#fff;text-decoration:underline;" target="_blank">Open video in new tab</a>
 </div>
 </div>
 </div>
@@ -626,8 +627,10 @@ window.openSnapshotGallery = function(startIndex){
   if (window.__videoModal) return; window.__videoModal=true;
   var modal=document.getElementById('videoModal');
   var video=document.getElementById('surveyVideo');
+  var videoOpenTab=document.getElementById('video-open-tab');
   window.openVideoModal=function(src){
     video.src = src;
+    if (videoOpenTab) { videoOpenTab.href = src; }
     video.load();
     try { video.play(); } catch(e) { console.warn('Autoplay blocked:', e); }
     modal.hidden=false; document.body.style.overflow='hidden';
