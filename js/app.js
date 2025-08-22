@@ -180,6 +180,15 @@
     }
 
     async function handleCard(li){
+      // Title-based detection as a strong fallback
+      try {
+        var titleEl = li.querySelector('.service-details h1, .service-details h2, .service-details h3, .service-details h4, .service-details h5');
+        var titleTxt = titleEl ? titleEl.textContent.trim().toLowerCase() : '';
+        if(!li.getAttribute('data-action')){
+          if(titleTxt.indexOf('roof snapshot') !== -1){ li.setAttribute('data-action','snapshot'); }
+          else if(titleTxt.indexOf('detailed roof report') !== -1){ li.setAttribute('data-action','report'); }
+        }
+      } catch(e) {}
       var action = li.getAttribute('data-action');
       var src = li.getAttribute('data-src');
       var idx = parseInt(li.getAttribute('data-index')||'0',10);
@@ -188,11 +197,13 @@
         action = parsed.action; src = src || parsed.src; idx = isNaN(idx) ? (parsed.idx||0) : idx;
       }
       if(action === 'snapshot'){
+        if(typeof window.openSnapshotGallery === 'function'){ window.openSnapshotGallery(idx||0); return; }
         var snap = await getSnapshotList();
         openImageLightbox(snap, idx||0);
         return;
       }
       if(action === 'report'){
+        if(typeof window.openReportGallery === 'function'){ window.openReportGallery(idx||0); return; }
         var rep = await getReportList();
         if(rep.length>1) openImageLightbox(rep, 0);
         else openImageLightbox(rep[0], 0);
