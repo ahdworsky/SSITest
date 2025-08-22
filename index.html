@@ -97,6 +97,19 @@
 }
 .serviceList .hoverhint{ display:inline-block !important; }
 </style>
+
+<style id="a11y-sr-only">
+.sr-only{position:absolute !important;width:1px !important;height:1px !important;padding:0 !important;margin:-1px !important;overflow:hidden !important;clip:rect(0,0,0,0) !important;white-space:nowrap !important;border:0 !important;}
+</style>
+
+<style id="a11y-contrast-fixes">
+.service-image .hoverhint .click, .service-image .hoverhint .tap{
+  background: rgba(0,0,0,0.6);
+  color:#fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+</style>
 </head>
 <body>
 <!-- Header start -->
@@ -143,22 +156,22 @@
 <div class="container">
 <h1>Our <span>Service</span></h1>
 <ul class="row serviceList">
-<li class="report-card col-md-6 col-sm-6" onclick="openSnapshotGallery(0); return false;" role="button" tabindex="0">
+<li class="report-card col-md-6 col-sm-6" onclick="openSnapshotGallery(0); return false;">
 <div class="service-image"><img src="images/one.jpg"/>
 <div class="hoverlink">
 <div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span>
 </span></div>
-<div class="service-details">
+<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openSnapshotGallery(0); return false; return false;">Open Roof Snapshot</a>
 <h3><a href="javascript:void(0)">Roof Snapshot</a></h3>
 <p>High-resolution aerial imagery for a quick overview of your roof’s condition.</p>
 <p><b>$125 (≤ 2,500 sq ft) / $175</b></p>
 <!-- <div class="readmore"><a href="javascript:void(0)">Read More</a></div> -->
 </div>
 </li>
-<li class="report-card col-md-6 col-sm-6" onclick="openReportGallery(0); return false;" role="button" tabindex="0">
+<li class="report-card col-md-6 col-sm-6" onclick="openReportGallery(0); return false;">
 <div class="service-image"><img alt="Detailed Roof Report" src="images/two.jpg"/><div class="hoverlink"><div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div></div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details">
+<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openReportGallery(0); return false; return false;">Open Detailed Roof Report</a>
 <h3><a href="javascript:void(0)">Detailed Roof Report</a></h3>
 <p>In-depth drone imaging documenting wear or damage—great for buyers or sellers.</p>
 <p><b>$150 (≤ 2,500 sq ft) / $200</b></p>
@@ -167,40 +180,40 @@
 </li>
 </ul>
 <ul class="row serviceList second">
-<li class="report-card col-md-4 col-sm-6" onclick="openVideoModal('images/LandSurveyFinal.mp4'); return false;" role="button" tabindex="0">
+<li class="report-card col-md-4 col-sm-6" onclick="openVideoModal('images/LandSurveyFinal.mp4'); return false;">
 <div class="service-image"><img src="images/five.jpg"/>
 <div class="hoverlink">
 <div class="icon"><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
 <span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details">
+<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openVideoModal('images/LandSurveyFinal.mp4'); return false; return false;">Open Land Survey Flyover</a>
 <h3><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Land Survey Flyover</a></h3>
 <p>Visualize property lines, terrain, and boundaries for undeveloped or large parcels.</p>
 <p><b>Quote Required</b></p>
 <!-- <div class="readmore"><a href="#">Read More</a></div> -->
 </div>
 </li>
-<li class="report-card col-md-4 col-sm-6" onclick="openImageLightbox('images/insurance-claim.png'); return false;" role="button" tabindex="0">
-<div class="service-image"><img src="images/six.jpg"/>
+<li class="report-card col-md-4 col-sm-6" onclick="openImageLightbox('images/Test2.jpg'); return false;">
+<div class="service-image"><img alt="Insurance Claim documentation preview" src="images/six.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
 <span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details">
-<h3><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Insurance Claim Documentation</a></h3>
+<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openImageLightbox('images/Test2.jpg'); return false; return false;">Open Insurance Claim Documentation</a>
+<h3><a href="#">Insurance Claim Documentation</a></h3>
 <p>Capture detailed roof damage imagery to support faster, smoother claim resolution.</p>
 <p><b>$150 Flat Rate</b></p>
 <!-- <div class="readmore"><a href="#">Read More</a></div> -->
 </div>
 </li>
-<li class="report-card col-md-4 col-sm-6" onclick="openImageLightbox('images/realtor-addon.png'); return false;" role="button" tabindex="0">
-<div class="service-image"><img src="images/four.jpg"/>
+<li class="report-card col-md-4 col-sm-6" onclick="openImageLightbox('images/Test3.jpg'); return false;">
+<div class="service-image"><img alt="Realtor Marketing Add-On preview" src="images/four.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
 <span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details">
-<h3><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Realtor Marketing Add-On</a></h3>
+<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openImageLightbox('images/Test3.jpg'); return false; return false;">Open Realtor Marketing Add-On</a>
+<h3><a href="#">Realtor Marketing Add-On</a></h3>
 <p>Aerial footage to elevate your listing with dramatic views and visual clarity.</p>
 <p><b>$50 Add-On</b></p>
 <!-- <div class="readmore"><a href="#">Read More</a></div> -->
@@ -642,96 +655,6 @@ window.openSnapshotGallery = function(startIndex){
   function escHandler(e){ if(e.key==='Escape') closeVideoModal(); }
   document.addEventListener('click',function(e){
     if(e.target && e.target.id==='videoModal'){ closeVideoModal(); }
-  });
-})();
-</script>
-<div hidden="" id="img-lightbox">
-<div data-close="1" id="img-backdrop"></div>
-<figure aria-label="Image preview" aria-modal="true" id="img-modal" role="dialog">
-<button aria-label="Close" data-close="1" id="img-close" type="button">×</button>
-<img alt="Preview image" id="img-view" src=""/>
-<figcaption class="sr-only" id="img-caption">Preview</figcaption>
-</figure>
-</div>
-<style>
-  #img-lightbox[hidden]{ display:none !important; }
-  #img-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.8); z-index:2147483000; }
-  #img-modal{ position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-    margin:0; z-index:2147483001; background:#000; padding:0; border-radius:8px;
-    max-width:95vw; max-height:90vh; display:flex; flex-direction:column; }
-  #img-view{ max-width:95vw; max-height:85vh; object-fit:contain; }
-  #img-close{ position:absolute; top:-12px; right:-12px; width:36px; height:36px; border-radius:50%;
-    border:none; background:#fff; font-size:20px; line-height:1; cursor:pointer; }
-</style>
-<script>
-(function(){
-  if (window.__imgLightbox) return; window.__imgLightbox = true;
-  var box, img;
-  function qs(id){ return document.getElementById(id); }
-  function lockScroll(on){ document.body.style.overflow = on ? 'hidden' : ''; }
-  window.openImageLightbox = function(src){
-    box = qs('img-lightbox'); img = qs('img-view');
-    if (!box || !img) return;
-    img.src = src;
-    box.hidden = false;
-    lockScroll(true);
-    document.addEventListener('keydown', onKey);
-  };
-  function closeBox(){
-    if (!box) return;
-    box.hidden = true;
-    lockScroll(false);
-    document.removeEventListener('keydown', onKey);
-  }
-  function onKey(e){ if (e.key === 'Escape') closeBox(); }
-  document.addEventListener('click', function(e){
-    if (e.target && e.target.closest('[data-close]')) { e.preventDefault(); closeBox(); }
-  });
-})();
-</script>
-
-<!-- Simple single-image lightbox -->
-<div hidden="" id="img-lightbox">
-<div data-close="1" id="img-backdrop"></div>
-<figure aria-label="Image preview" aria-modal="true" id="img-modal" role="dialog">
-<button aria-label="Close" data-close="1" id="img-close" type="button">×</button>
-<img alt="Preview image" id="img-view" src=""/>
-<figcaption class="sr-only" id="img-caption">Preview</figcaption>
-</figure>
-</div>
-<style>
-  #img-lightbox[hidden]{ display:none !important; }
-  #img-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.8); z-index:2147483000; }
-  #img-modal{ position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-    margin:0; z-index:2147483001; background:#000; padding:0; border-radius:8px;
-    max-width:95vw; max-height:90vh; display:flex; flex-direction:column; }
-  #img-view{ max-width:95vw; max-height:85vh; object-fit:contain; }
-  #img-close{ position:absolute; top:-12px; right:-12px; width:36px; height:36px; border-radius:50%;
-    border:none; background:#fff; font-size:20px; line-height:1; cursor:pointer; }
-</style>
-<script>
-(function(){
-  if (window.__imgLightbox) return; window.__imgLightbox = true;
-  var box, img;
-  function qs(id){ return document.getElementById(id); }
-  function lockScroll(on){ document.body.style.overflow = on ? 'hidden' : ''; }
-  window.openImageLightbox = function(src){
-    box = qs('img-lightbox'); img = qs('img-view');
-    if (!box || !img) return;
-    img.src = src;
-    box.hidden = false;
-    lockScroll(true);
-    document.addEventListener('keydown', onKey);
-  };
-  function closeBox(){
-    if (!box) return;
-    box.hidden = true;
-    lockScroll(false);
-    document.removeEventListener('keydown', onKey);
-  }
-  function onKey(e){ if (e.key === 'Escape') closeBox(); }
-  document.addEventListener('click', function(e){
-    if (e.target && e.target.closest('[data-close]')) { e.preventDefault(); closeBox(); }
   });
 })();
 </script>
