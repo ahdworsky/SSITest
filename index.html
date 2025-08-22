@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head><meta content="default-src 'self'; base-uri 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'; media-src 'self' data: blob:; frame-ancestors 'self'; object-src 'none'; form-action 'self'; upgrade-insecure-requests" http-equiv="Content-Security-Policy"/>
+<head>
 <meta charset="utf-8"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="upgrade-insecure-requests" http-equiv="Content-Security-Policy"/>
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>SkySure Inspections</title>
 <!-- Fav Icon -->
@@ -142,22 +143,22 @@
 <div class="container">
 <h1>Our <span>Service</span></h1>
 <ul class="row serviceList">
-<li class="report-card col-md-6 col-sm-6" data-action="snapshot" data-index="0">
+<li class="report-card col-md-6 col-sm-6" data-action="snapshot" data-index="0" role="button" tabindex="0">
 <div class="service-image"><img alt="Roof Snapshot preview" src="images/one.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a aria-hidden="true" href="javascript:void(0)" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span>
 </span></div>
-<div class="service-details"><a class="sr-only card-activator" href="#">Open Roof Snapshot</a>
+<div class="service-details">
 <h3><a href="javascript:void(0)">Roof Snapshot</a></h3>
 <p>High-resolution aerial imagery for a quick overview of your roof’s condition.</p>
 <p><b>$125 (≤ 2,500 sq ft) / $175</b></p>
 <!-- <div class="readmore"><a href="javascript:void(0)">Read More</a></div> -->
 </div>
 </li>
-<li class="report-card col-md-6 col-sm-6" data-action="report" data-index="0">
-<div class="service-image"><img alt="Detailed Roof Report preview" src="images/two.jpg"/><div class="hoverlink"><div class="icon"><a aria-hidden="true" href="javascript:void(0)" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div></div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details"><a class="sr-only card-activator" href="#">Open Detailed Roof Report</a>
+<li class="report-card col-md-6 col-sm-6" data-action="report" data-index="0" role="button" tabindex="0">
+<div class="service-image"><img alt="Detailed Roof Report preview" src="images/two.jpg"/><div class="hoverlink"><div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div></div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
+<div class="service-details">
 <h3><a href="javascript:void(0)">Detailed Roof Report</a></h3>
 <p>In-depth drone imaging documenting wear or damage—great for buyers or sellers.</p>
 <p><b>$150 (≤ 2,500 sq ft) / $200</b></p>
@@ -166,38 +167,38 @@
 </li>
 </ul>
 <ul class="row serviceList second">
-<li class="report-card col-md-4 col-sm-6" data-action="video" data-src="images/LandSurveyFinal.mp4">
+<li class="report-card col-md-4 col-sm-6" data-action="video" data-src="images/LandSurveyFinal.mp4" role="button" tabindex="0">
 <div class="service-image"><img alt="Land Survey Flyover preview" src="images/five.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a aria-hidden="true" href="javascript:void(0)" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
 <span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details"><a class="sr-only card-activator" href="#">Open Land Survey Flyover</a>
+<div class="service-details">
 <h3><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Land Survey Flyover</a></h3>
 <p>Visualize property lines, terrain, and boundaries for undeveloped or large parcels.</p>
 <p><b>Quote Required</b></p>
 <!-- <div class="readmore"><a href="#">Read More</a></div> -->
 </div>
-<li class="report-card col-md-4 col-sm-6">
-<div class="service-image"><img alt="Insurance Claim documentation preview" src="images/six.jpg"/>
+<li class="report-card col-md-4 col-sm-6" data-action="image" data-src="images/insurance-claim.png" role="button" tabindex="0">
+<div class="service-image"><img src="images/six.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a aria-hidden="true" href="javascript:void(0)" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
 <span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details"><a class="sr-only card-activator" href="#">Open Insurance Claim Documentation</a>
+<div class="service-details">
 <h3><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Insurance Claim Documentation</a></h3>
 <p>Capture detailed roof damage imagery to support faster, smoother claim resolution.</p>
 <p><b>$150 Flat Rate</b></p>
 <!-- <div class="readmore"><a href="#">Read More</a></div> -->
 </div>
 </li>
-<li class="report-card col-md-4 col-sm-6">
-<div class="service-image"><img alt="Realtor Marketing Add-On preview" src="images/four.jpg"/>
+<li class="report-card col-md-4 col-sm-6" data-action="image" data-src="images/realtor-addon.png" role="button" tabindex="0">
+<div class="service-image"><img src="images/four.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a aria-hidden="true" href="javascript:void(0)" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
 <span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details"><a class="sr-only card-activator" href="#">Open Realtor Marketing Add-On</a>
+<div class="service-details">
 <h3><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Realtor Marketing Add-On</a></h3>
 <p>Aerial footage to elevate your listing with dramatic views and visual clarity.</p>
 <p><b>$50 Add-On</b></p>
@@ -243,7 +244,7 @@
 <div class="backdrop" hidden="" id="modal-backdrop"></div>
 <!-- Appointment form modal -->
 <div aria-describedby="appt-desc" aria-labelledby="appt-title" aria-modal="true" hidden="" id="appointment-form" role="dialog" tabindex="-1">
-<button aria-label="Close form" class="close-btn" onclick="toggleForm()">×</button>
+<button aria-label="Close form" class="close-btn">×</button>
 <h3 id="appt-title">Schedule an Inspection</h3>
 <p class="sr-only" id="appt-desc">
     Provide your contact information and service preference to request an appointment.
@@ -332,226 +333,10 @@
 </div>
 <div aria-label="Page thumbnails" class="thumbs" id="report-thumbs"></div>
 </div>
-<script>
-// --- Report gallery v2.3 (self-contained with live zoom %) ---
-(function () {
-  if (window.__reportV23) return; window.__reportV23 = true;
 
-  window.REPORT_PAGES = window.REPORT_PAGES || [
-    'images/SampleInspectionReport_page1_small.jpg',
-    'images/SampleInspectionReport_page2_small.jpg',
-    'images/SampleInspectionReport_page3_small.jpg',
-    'images/SampleInspectionReport_page4_small.jpg'
-  ];
 
-  var overlay, imgEl, counterEl, idx = 0;
-  var frameEl, prevBtn, nextBtn, thumbsEl;
-  var zoomScale = 1, minZoom = 1, maxZoom = 2.5, zoomStep = 0.25;
-  var isPanning = false, startX = 0, startY = 0, originX = 0, originY = 0;
-  var zoomLabelEl;
 
-  function el(id){ return document.getElementById(id); }
-  function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
 
-  function updateZoomLabel(){
-    if (!zoomLabelEl) zoomLabelEl = el('zoom-label') || el('zoom-reset');
-    if (zoomLabelEl) zoomLabelEl.textContent = Math.round(zoomScale * 100) + '%';
-  }
-
-  function setImage(i){
-    idx = clamp(i, 0, window.REPORT_PAGES.length - 1);
-    if (!imgEl) imgEl = el('report-image');
-    imgEl.src = window.REPORT_PAGES[idx];
-    if (!counterEl) counterEl = el('report-counter');
-    if (counterEl) counterEl.textContent = (idx + 1) + ' / ' + window.REPORT_PAGES.length;
-    if (!prevBtn) prevBtn = el('report-prev');
-    if (!nextBtn) nextBtn = el('report-next');
-    if (prevBtn) prevBtn.disabled = (idx === 0);
-    if (nextBtn) nextBtn.disabled = (idx === window.REPORT_PAGES.length - 1);
-    [idx - 1, idx + 1].forEach(function(n){ if (n>=0 && n<window.REPORT_PAGES.length){ (new Image()).src = window.REPORT_PAGES[n]; } });
-    resetZoom();
-  }
-
-  function onKey(e){
-    if (overlay.hidden) return;
-    if (e.key === 'Escape') closeReportGallery();
-    else if (e.key === 'ArrowRight') nextReport();
-    else if (e.key === 'ArrowLeft') prevReport();
-    else if (e.key === '+') zoomIn();
-    else if (e.key === '-') zoomOut();
-    else if (e.key === '0') resetZoom();
-  }
-
-  function stopScroll(lock){ document.body.style.overflow = lock ? 'hidden' : ''; }
-
-  function applyTransform(){
-    if (!imgEl) imgEl = el('report-image');
-    imgEl.style.transform = 'translate(' + originX + 'px,' + originY + 'px) scale(' + zoomScale + ')';
-    imgEl.style.transformOrigin = 'center center';
-    var fr = document.querySelector('.report-frame');
-    if (fr) fr.classList.toggle('zoomed', zoomScale > 1);
-    updateZoomLabel();
-  }
-
-  function zoomIn(){ zoomScale = clamp(zoomScale + zoomStep, minZoom, maxZoom); applyTransform(); }
-  function zoomOut(){ zoomScale = clamp(zoomScale - zoomStep, minZoom, maxZoom); if (zoomScale === 1){ originX = 0; originY = 0; } applyTransform(); }
-  function resetZoom(){ zoomScale = 1; originX = 0; originY = 0; applyTransform(); }
-
-  function startPan(e){
-    if (zoomScale === 1) return;
-    isPanning = true;
-    var p = (e.touches && e.touches[0]) || e;
-    startX = p.clientX - originX;
-    startY = p.clientY - originY;
-    e.preventDefault && e.preventDefault();
-  }
-  function movePan(e){
-    if (!isPanning) return;
-    var p = (e.touches && e.touches[0]) || e;
-    originX = p.clientX - startX;
-    originY = p.clientY - startY;
-    applyTransform();
-    e.preventDefault && e.preventDefault();
-  }
-  function endPan(){ isPanning = false; }
-
-  window.openReportGallery = function(startIndex){
-    overlay   = el('report-overlay');
-    imgEl     = el('report-image');
-    counterEl = el('report-counter');
-    frameEl   = document.querySelector('.report-frame');
-    thumbsEl  = el('report-thumbs');
-    prevBtn   = el('report-prev');
-    nextBtn   = el('report-next');
-    zoomLabelEl = el('zoom-label') || el('zoom-reset');
-
-    setImage(startIndex || 0);
-    overlay.hidden = false;
-    stopScroll(true);
-    document.addEventListener('keydown', onKey);
-  };
-
-  window.closeReportGallery = function(){
-    if (!overlay) overlay = el('report-overlay');
-    overlay.hidden = true;
-    stopScroll(false);
-    document.removeEventListener('keydown', onKey);
-  };
-
-  var navLock=false;function navigate(delta){if(navLock)return;navLock=true;setImage(idx+delta);setTimeout(function(){navLock=false;},140);} window.nextReport=function(){navigate(1);};
-  window.prevReport=function(){navigate(-1);};
-
-  document.addEventListener('DOMContentLoaded', function(){
-    var root = el('report-overlay'); if (!root) return;
-
-    // Close on any [data-close]
-    root.addEventListener('click', function(e){
-      var closeNode = e.target.closest('[data-close]');
-      if (closeNode){ e.preventDefault(); e.stopPropagation(); closeReportGallery(); }
-    });
-
-    // Controls
-    document.getElementById("report-prev")?.addEventListener("click", function(e){ e.preventDefault(); window.prevReport(); });
-document.getElementById("report-next")?.addEventListener("click", function(e){ e.preventDefault(); window.nextReport(); });
-// Zoom controls
-    el('zoom-in')?.addEventListener('click',  function(e){ e.preventDefault(); zoomIn();  });
-    el('zoom-out')?.addEventListener('click', function(e){ e.preventDefault(); zoomOut(); });
-    el('zoom-reset')?.addEventListener('click', function(e){ e.preventDefault(); resetZoom(); });
-
-    // Double-click / double-tap to zoom
-    var lastTap = 0;
-    frameEl = document.querySelector('.report-frame');
-    frameEl.addEventListener('dblclick', function(){ (zoomScale === 1)? zoomIn() : resetZoom(); });
-    frameEl.addEventListener('touchend', function(e){
-      var now = Date.now();
-      if (now - lastTap < 300){ (zoomScale === 1)? zoomIn() : resetZoom(); }
-      lastTap = now;
-    });
-
-    // Drag/pan when zoomed
-    imgEl = el('report-image');
-    frameEl.addEventListener('mousedown', startPan);
-    frameEl.addEventListener('mousemove', movePan);
-    window.addEventListener('mouseup', endPan);
-    frameEl.addEventListener('touchstart', startPan, {passive:false});
-    frameEl.addEventListener('touchmove', function(e){ movePan(e); if (zoomScale>1) e.preventDefault(); }, {passive:false});
-    frameEl.addEventListener('touchend', endPan);
-
-    // Initialize label to 100% on load
-    updateZoomLabel();
-  });
-})();
-</script>
-<script>
-// Hardened handler: open form on any "Schedule an Inspection" click and prevent navigation
-document.addEventListener('click', function(e){
-  var a = e.target.closest('a.js-open-appt');
-  if (!a) return;
-  e.preventDefault();
-  if (window.toggleForm) { window.toggleForm(); }
-  else {
-    var form = document.getElementById('appointment-form');
-    var backdrop = document.getElementById('modal-backdrop');
-    if (form && backdrop) { form.removeAttribute('hidden'); backdrop.removeAttribute('hidden'); }
-  }
-});
-</script>
-<script>
-// Modal close/open wiring (backdrop + X + Esc)
-document.addEventListener('DOMContentLoaded', function(){
-  var form = document.getElementById('appointment-form');
-  var backdrop = document.getElementById('modal-backdrop');
-  if (!form || !backdrop) return;
-
-  // Click X
-  form.addEventListener('click', function(e){
-    var btn = e.target.closest('.close-btn');
-    if (btn){ e.preventDefault(); if (window.toggleForm) return toggleForm(); form.setAttribute('hidden',''); backdrop.setAttribute('hidden',''); }
-  });
-
-  // Click outside (backdrop)
-  backdrop.addEventListener('click', function(e){
-    e.preventDefault();
-    if (window.toggleForm) return toggleForm();
-    form.setAttribute('hidden',''); backdrop.setAttribute('hidden','');
-  });
-
-  // Escape key
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape' && !form.hasAttribute('hidden')){
-      if (window.toggleForm) return toggleForm();
-      form.setAttribute('hidden',''); backdrop.setAttribute('hidden','');
-    }
-  });
-});
-</script>
-<script>
-// === Roof Snapshot gallery images (auto-inserted) ===
-window.SNAPSHOT_PAGES = ["images/01.jpg","images/02.jpg","images/03.jpg","images/04.jpg","images/05.jpg","images/06.jpg","images/07.jpg","images/08.jpg","images/09.jpg","images/10.jpg","images/11.jpg","images/12.jpg","images/13.jpg","images/14.jpg","images/15.jpg","images/16.jpg"];
-
-// Open Snapshot gallery using existing viewer (temporarily swap REPORT_PAGES)
-window.openSnapshotGallery = function(startIndex){
-  try {
-    window.__REPORT_PAGES_BACKUP = window.REPORT_PAGES && window.REPORT_PAGES.slice ? window.REPORT_PAGES.slice() : window.REPORT_PAGES;
-    window.REPORT_PAGES = window.SNAPSHOT_PAGES.slice();
-    if (typeof openReportGallery === "function") {
-      openReportGallery(startIndex || 0);
-    }
-  } catch(e) { console && console.error(e); }
-};
-
-// Restore Detailed pages after closing
-(function(){
-  var _origClose = window.closeReportGallery;
-  window.closeReportGallery = function(){
-    if (typeof _origClose === "function") _origClose();
-    if (window.__REPORT_PAGES_BACKUP) {
-      window.REPORT_PAGES = window.__REPORT_PAGES_BACKUP;
-      window.__REPORT_PAGES_BACKUP = null;
-    }
-  };
-})();
-</script>
 </div>
 <!-- Simple single-image lightbox -->
 <div hidden="" id="img-lightbox">
@@ -572,10 +357,11 @@ window.openSnapshotGallery = function(startIndex){
   #img-close{ position:absolute; top:-12px; right:-12px; width:36px; height:36px; border-radius:50%;
     border:none; background:#fff; font-size:20px; line-height:1; cursor:pointer; }
 </style>
+
 <!-- Video Modal -->
 <div class="video-modal-overlay" hidden="" id="videoModal">
 <div class="video-modal-container">
-<button class="video-modal-close" onclick="closeVideoModal()">×</button>
+<button class="video-modal-close">×</button>
 <div class="video-modal-content">
 <video controls="" id="surveyVideo" poster="images/land-survey-poster.jpg" style="max-width:90vw; max-height:80vh;">
 <source src="" type="video/mp4"/>
@@ -593,5 +379,6 @@ window.openSnapshotGallery = function(startIndex){
 .video-modal-close{ position:absolute; top:-30px; right:-30px; font-size:30px;
   background:#fff; border:none; border-radius:50%; cursor:pointer; width:40px; height:40px; }
 </style>
-<script src="js/app.js" defer></script></body>
+
+<script defer="True" src="js/app.js"></script></body>
 </html>
