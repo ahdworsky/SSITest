@@ -1,6 +1,7 @@
 
 (function(){
   function onReady(fn){ if(document.readyState!=='loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+
   onReady(function(){
 
     // ---------- Helpers ----------
@@ -13,14 +14,18 @@
     var backdropEl = $('#modal-backdrop');
     function openForm(){ if(formEl && backdropEl){ formEl.hidden=false; backdropEl.hidden=false; lockScroll(true); } }
     function closeForm(){ if(formEl && backdropEl){ formEl.hidden=true; backdropEl.hidden=true; lockScroll(false); } }
+
+    // Open
     document.addEventListener('click', function(e){
       var openBtn = e.target.closest && e.target.closest('a.js-open-appt');
       if(openBtn){ e.preventDefault(); openForm(); }
     });
+    // Close via backdrop / X
     document.addEventListener('click', function(e){
       if(e.target && e.target.id==='modal-backdrop'){ closeForm(); }
       if(e.target && e.target.closest && e.target.closest('.close-btn')){ e.preventDefault(); closeForm(); }
     });
+    // Close on Esc
     document.addEventListener('keydown', function(e){
       if(e.key==='Escape'){ closeForm(); closeVideoModal(); closeImageLightbox(); }
     });
@@ -70,7 +75,6 @@
       }
       if(!thumbs){
         thumbs = document.createElement('div'); thumbs.id='img-thumbs'; thumbs.style.display='none';
-        // place after the main image
         fig.appendChild(thumbs);
       }
     }
@@ -186,14 +190,14 @@
     });
 
     // ---------- Card handler ----------
-    // Fast, static lists (no network detection) for speed:
+    // Fast, static lists for speed:
     var SNAPSHOT_LIST = Array.from({length:16}, function(_,i){ return 'images/' + String(i+1).padStart(2,'0') + '.jpg'; });
     var REPORT_LIST   = [
       'images/SampleInspectionReport_page1_small.jpg',
       'images/SampleInspectionReport_page2_small.jpg',
       'images/SampleInspectionReport_page3_small.jpg',
       'images/SampleInspectionReport_page4_small.jpg'
-    ];});
+    ];
 
     function parseInline(li){
       var oc = li.getAttribute('onclick') || '';
@@ -224,17 +228,8 @@
         action = parsed.action; src = src || parsed.src; idx = isNaN(idx) ? (parsed.idx||0) : idx;
       }
 
-      if(action === 'snapshot'){
-        // Use fast static list for instant open
-        openImageLightbox(SNAPSHOT_LIST, idx||0);
-        return;
-      }
-      if(action === 'report'){
-        // Try 4-page report; if those files don't exist in your repo, replace REPORT_LIST with your actual filenames
-        if(REPORT_LIST && REPORT_LIST.length>1){ openImageLightbox(REPORT_LIST, 0); }
-        else { openImageLightbox('images/two.jpg', 0); }
-        return;
-      }
+      if(action === 'snapshot'){ openImageLightbox(SNAPSHOT_LIST, idx||0); return; }
+      if(action === 'report'){ if(REPORT_LIST && REPORT_LIST.length>1){ openImageLightbox(REPORT_LIST, 0); } else { openImageLightbox('images/two.jpg', 0); } return; }
       if(action === 'video' && src){ openVideoModal(src); return; }
       if(action === 'image' && src){ openImageLightbox(src, 0); return; }
     }
@@ -248,13 +243,13 @@
       if(small){ small.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); }); }
     });
 
-    // Expose for legacy calls
+    // Expose for any legacy calls
     window.openImageLightbox   = function(arg, start){ openImageLightbox(arg, start||0); };
     window.openVideoModal      = function(src){ openVideoModal(src); };
     window.closeVideoModal     = function(){ closeVideoModal(); };
     window.openSnapshotGallery = function(i){ openImageLightbox(SNAPSHOT_LIST, i||0); };
     window.openReportGallery   = function(i){ if(REPORT_LIST && REPORT_LIST.length>1) openImageLightbox(REPORT_LIST, i||0); else openImageLightbox('images/two.jpg', 0); };
 
-    console.log('[app.js] gallery enhanced: fast lists + thumbnails + counter');
+    console.log('[app.js] loaded: modals + galleries wired');
   });
 })();
