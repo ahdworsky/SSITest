@@ -99,16 +99,7 @@
 </style>
 
 <style id="a11y-sr-only">
-.sr-only{position:absolute !important;width:1px !important;height:1px !important;padding:0 !important;margin:-1px !important;overflow:hidden !important;clip:rect(0,0,0,0) !important;white-space:nowrap !important;border:0 !important;}
-</style>
-
-<style id="a11y-contrast-fixes">
-.service-image .hoverhint .click, .service-image .hoverhint .tap{
-  background: rgba(0,0,0,0.6);
-  color:#fff;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;}
 </style>
 </head>
 <body>
@@ -118,7 +109,7 @@
 <!-- Row Rtart -->
 <div class="row">
 <div class="col-md-3 col-sm-3">
-<div class="logo"><img src="images/logo.png"/></div>
+<div class="logo"><img alt="SkySure Inspections logo" src="images/logo.png"/></div>
 <div class="navbar-header">
 <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 </div>
@@ -157,22 +148,22 @@
 <h1>Our <span>Service</span></h1>
 <ul class="row serviceList">
 <li class="report-card col-md-6 col-sm-6" onclick="openSnapshotGallery(0); return false;">
-<div class="service-image"><img src="images/one.jpg"/>
+<div class="service-image"><img alt="Roof Snapshot preview" src="images/one.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a aria-hidden="true" href="javascript:void(0)" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span>
 </span></div>
 <div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openSnapshotGallery(0); return false; return false;">Open Roof Snapshot</a>
-<h3><a href="javascript:void(0)">Roof Snapshot</a></h3>
+<h2><a href="javascript:void(0)">Roof Snapshot</a></h2>
 <p>High-resolution aerial imagery for a quick overview of your roof’s condition.</p>
 <p><b>$125 (≤ 2,500 sq ft) / $175</b></p>
 <!-- <div class="readmore"><a href="javascript:void(0)">Read More</a></div> -->
 </div>
 </li>
 <li class="report-card col-md-6 col-sm-6" onclick="openReportGallery(0); return false;">
-<div class="service-image"><img alt="Detailed Roof Report" src="images/two.jpg"/><div class="hoverlink"><div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div></div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
+<div class="service-image"><img alt="Detailed Roof Report preview" src="images/two.jpg"/><div class="hoverlink"><div class="icon"><a aria-hidden="true" href="javascript:void(0)" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div></div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
 <div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openReportGallery(0); return false; return false;">Open Detailed Roof Report</a>
-<h3><a href="javascript:void(0)">Detailed Roof Report</a></h3>
+<h2><a href="javascript:void(0)">Detailed Roof Report</a></h2>
 <p>In-depth drone imaging documenting wear or damage—great for buyers or sellers.</p>
 <p><b>$150 (≤ 2,500 sq ft) / $200</b></p>
 <!-- <div class="readmore"><a href="javascript:void(0)">Read More</a></div> -->
@@ -181,45 +172,44 @@
 </ul>
 <ul class="row serviceList second">
 <li class="report-card col-md-4 col-sm-6" onclick="openVideoModal('images/LandSurveyFinal.mp4'); return false;">
-<div class="service-image"><img src="images/five.jpg"/>
+<div class="service-image"><img alt="Land Survey Flyover preview" src="images/five.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a aria-hidden="true" href="javascript:void(0)" onclick="event.stopPropagation(); return false;" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
 <span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
 <div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openVideoModal('images/LandSurveyFinal.mp4'); return false; return false;">Open Land Survey Flyover</a>
-<h3><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Land Survey Flyover</a></h3>
+<h2><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Land Survey Flyover</a></h2>
 <p>Visualize property lines, terrain, and boundaries for undeveloped or large parcels.</p>
 <p><b>Quote Required</b></p>
 <!-- <div class="readmore"><a href="#">Read More</a></div> -->
 </div>
-</li>
-<li class="report-card col-md-4 col-sm-6" onclick="openImageLightbox('images/Test2.jpg'); return false;">
+<li class="report-card col-md-4 col-sm-6" onclick="openImageLightbox('images/insurance-claim.png'); return false;">
 <div class="service-image"><img alt="Insurance Claim documentation preview" src="images/six.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a aria-hidden="true" href="javascript:void(0)" onclick="event.stopPropagation(); return false;" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
 <span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openImageLightbox('images/Test2.jpg'); return false; return false;">Open Insurance Claim Documentation</a>
-<h3><a href="#">Insurance Claim Documentation</a></h3>
+<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openImageLightbox('images/insurance-claim.png'); return false; return false;">Open Insurance Claim Documentation</a>
+<h2><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Insurance Claim Documentation</a></h2>
 <p>Capture detailed roof damage imagery to support faster, smoother claim resolution.</p>
 <p><b>$150 Flat Rate</b></p>
 <!-- <div class="readmore"><a href="#">Read More</a></div> -->
 </div>
 </li>
-<li class="report-card col-md-4 col-sm-6" onclick="openImageLightbox('images/Test3.jpg'); return false;">
+<li class="report-card col-md-4 col-sm-6" onclick="openImageLightbox('images/realtor-addon.png'); return false;">
 <div class="service-image"><img alt="Realtor Marketing Add-On preview" src="images/four.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a aria-hidden="true" href="javascript:void(0)" onclick="event.stopPropagation(); return false;" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
 <span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openImageLightbox('images/Test3.jpg'); return false; return false;">Open Realtor Marketing Add-On</a>
-<h3><a href="#">Realtor Marketing Add-On</a></h3>
+<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openImageLightbox('images/realtor-addon.png'); return false; return false;">Open Realtor Marketing Add-On</a>
+<h2><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Realtor Marketing Add-On</a></h2>
 <p>Aerial footage to elevate your listing with dramatic views and visual clarity.</p>
 <p><b>$50 Add-On</b></p>
 <!-- <div class="readmore"><a href="#">Read More</a></div> -->
 </div>
 </li>
-</ul>
+</li></ul>
 </div>
 </div>
 <!--service end-->
@@ -233,7 +223,7 @@
 <!-- <div class="readmore"><a href="#">Read More</a></div> -->
 </div>
 <div class="col-md-5">
-<div class="about-image"><img src="images/feature-image-3.jpg"/></div>
+<div class="about-image"><img alt="" aria-hidden="true" role="presentation" src="images/feature-image-3.jpg"/></div>
 </div>
 </div>
 </div>
@@ -243,7 +233,7 @@
 <div class="footer-wrap">
 <div class="container">
 <div class="footer-content">
-<div class="footer-logo"><a href="index.html"><img src="images/footer-logo.png"/></a></div>
+<div class="footer-logo"><a aria-label="SkySure Inspections home" href="index.html"><img alt="SkySure Inspections" src="images/footer-logo.png"/></a></div>
 <p>FAA Part 107 Certified | Insured | Not a home inspection – just a clear, sky-high view of what matters most. </p>
 <div class="address_info">
 <div class="call-us">Email: <a href="mailto:support@skysureinspections.com">support@skysureinspections.com</a></div>
