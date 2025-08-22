@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
+<head><meta content="default-src 'self'; base-uri 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'; media-src 'self' data: blob:; frame-ancestors 'self'; object-src 'none'; form-action 'self'; upgrade-insecure-requests" http-equiv="Content-Security-Policy"/>
 <meta charset="utf-8"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="upgrade-insecure-requests" http-equiv="Content-Security-Policy"/>
+
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>SkySure Inspections</title>
 <!-- Fav Icon -->
@@ -97,10 +97,6 @@
 }
 .serviceList .hoverhint{ display:inline-block !important; }
 </style>
-
-<style id="a11y-sr-only">
-.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;}
-</style>
 </head>
 <body>
 <!-- Header start -->
@@ -147,23 +143,23 @@
 <div class="container">
 <h1>Our <span>Service</span></h1>
 <ul class="row serviceList">
-<li class="report-card col-md-6 col-sm-6" onclick="openSnapshotGallery(0); return false;">
+<li class="report-card col-md-6 col-sm-6" data-action="snapshot" data-index="0" role="button" tabindex="0">
 <div class="service-image"><img alt="Roof Snapshot preview" src="images/one.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a aria-hidden="true" href="javascript:void(0)" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span>
 </span></div>
-<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openSnapshotGallery(0); return false; return false;">Open Roof Snapshot</a>
-<h2><a href="javascript:void(0)">Roof Snapshot</a></h2>
+<div class="service-details">
+<h3><a href="javascript:void(0)">Roof Snapshot</a></h3>
 <p>High-resolution aerial imagery for a quick overview of your roof’s condition.</p>
 <p><b>$125 (≤ 2,500 sq ft) / $175</b></p>
 <!-- <div class="readmore"><a href="javascript:void(0)">Read More</a></div> -->
 </div>
 </li>
-<li class="report-card col-md-6 col-sm-6" onclick="openReportGallery(0); return false;">
-<div class="service-image"><img alt="Detailed Roof Report preview" src="images/two.jpg"/><div class="hoverlink"><div class="icon"><a aria-hidden="true" href="javascript:void(0)" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div></div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openReportGallery(0); return false; return false;">Open Detailed Roof Report</a>
-<h2><a href="javascript:void(0)">Detailed Roof Report</a></h2>
+<li class="report-card col-md-6 col-sm-6" data-action="report" data-index="0" role="button" tabindex="0">
+<div class="service-image"><img alt="Detailed Roof Report preview" src="images/two.jpg"/><div class="hoverlink"><div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div></div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
+<div class="service-details">
+<h3><a href="javascript:void(0)">Detailed Roof Report</a></h3>
 <p>In-depth drone imaging documenting wear or damage—great for buyers or sellers.</p>
 <p><b>$150 (≤ 2,500 sq ft) / $200</b></p>
 <!-- <div class="readmore"><a href="javascript:void(0)">Read More</a></div> -->
@@ -171,39 +167,39 @@
 </li>
 </ul>
 <ul class="row serviceList second">
-<li class="report-card col-md-4 col-sm-6" onclick="openVideoModal('images/LandSurveyFinal.mp4'); return false;">
+<li class="report-card col-md-4 col-sm-6" onclick="openVideoModal('images/LandSurveyFinal.mp4'); return false;" role="button" tabindex="0">
 <div class="service-image"><img alt="Land Survey Flyover preview" src="images/five.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a aria-hidden="true" href="javascript:void(0)" onclick="event.stopPropagation(); return false;" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
 <span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openVideoModal('images/LandSurveyFinal.mp4'); return false; return false;">Open Land Survey Flyover</a>
-<h2><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Land Survey Flyover</a></h2>
+<div class="service-details">
+<h3><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Land Survey Flyover</a></h3>
 <p>Visualize property lines, terrain, and boundaries for undeveloped or large parcels.</p>
 <p><b>Quote Required</b></p>
 <!-- <div class="readmore"><a href="#">Read More</a></div> -->
 </div>
-<li class="report-card col-md-4 col-sm-6" onclick="openImageLightbox('images/insurance-claim.png'); return false;">
-<div class="service-image"><img alt="Insurance Claim documentation preview" src="images/six.jpg"/>
+<li class="report-card col-md-4 col-sm-6" onclick="openImageLightbox('images/insurance-claim.png'); return false;" role="button" tabindex="0">
+<div class="service-image"><img src="images/six.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a aria-hidden="true" href="javascript:void(0)" onclick="event.stopPropagation(); return false;" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
 <span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openImageLightbox('images/insurance-claim.png'); return false; return false;">Open Insurance Claim Documentation</a>
-<h2><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Insurance Claim Documentation</a></h2>
+<div class="service-details">
+<h3><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Insurance Claim Documentation</a></h3>
 <p>Capture detailed roof damage imagery to support faster, smoother claim resolution.</p>
 <p><b>$150 Flat Rate</b></p>
 <!-- <div class="readmore"><a href="#">Read More</a></div> -->
 </div>
 </li>
-<li class="report-card col-md-4 col-sm-6" onclick="openImageLightbox('images/realtor-addon.png'); return false;">
-<div class="service-image"><img alt="Realtor Marketing Add-On preview" src="images/four.jpg"/>
+<li class="report-card col-md-4 col-sm-6" onclick="openImageLightbox('images/realtor-addon.png'); return false;" role="button" tabindex="0">
+<div class="service-image"><img src="images/four.jpg"/>
 <div class="hoverlink">
-<div class="icon"><a aria-hidden="true" href="javascript:void(0)" onclick="event.stopPropagation(); return false;" tabindex="-1"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
+<div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
 <span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
-<div class="service-details"><a class="sr-only card-activator" href="javascript:void(0)" onclick="openImageLightbox('images/realtor-addon.png'); return false; return false;">Open Realtor Marketing Add-On</a>
-<h2><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Realtor Marketing Add-On</a></h2>
+<div class="service-details">
+<h3><a href="javascript:void(0)" onclick="event.stopPropagation(); return false;">Realtor Marketing Add-On</a></h3>
 <p>Aerial footage to elevate your listing with dramatic views and visual clarity.</p>
 <p><b>$50 Add-On</b></p>
 <!-- <div class="readmore"><a href="#">Read More</a></div> -->
@@ -577,32 +573,7 @@ window.openSnapshotGallery = function(startIndex){
   #img-close{ position:absolute; top:-12px; right:-12px; width:36px; height:36px; border-radius:50%;
     border:none; background:#fff; font-size:20px; line-height:1; cursor:pointer; }
 </style>
-<script>
-(function(){
-  if (window.__imgLightbox) return; window.__imgLightbox = true;
-  var box, img;
-  function qs(id){ return document.getElementById(id); }
-  function lockScroll(on){ document.body.style.overflow = on ? 'hidden' : ''; }
-  window.openImageLightbox = function(src){
-    box = qs('img-lightbox'); img = qs('img-view');
-    if (!box || !img) return;
-    img.src = src;
-    box.hidden = false;
-    lockScroll(true);
-    document.addEventListener('keydown', onKey);
-  };
-  function closeBox(){
-    if (!box) return;
-    box.hidden = true;
-    lockScroll(false);
-    document.removeEventListener('keydown', onKey);
-  }
-  function onKey(e){ if (e.key === 'Escape') closeBox(); }
-  document.addEventListener('click', function(e){
-    if (e.target && e.target.closest('[data-close]')) { e.preventDefault(); closeBox(); }
-  });
-})();
-</script>
+
 <!-- Video Modal -->
 <div class="video-modal-overlay" hidden="" id="videoModal">
 <div class="video-modal-container">
@@ -624,29 +595,6 @@ window.openSnapshotGallery = function(startIndex){
 .video-modal-close{ position:absolute; top:-30px; right:-30px; font-size:30px;
   background:#fff; border:none; border-radius:50%; cursor:pointer; width:40px; height:40px; }
 </style>
-<script>
-(function(){
-  if (window.__videoModal) return; window.__videoModal=true;
-  var modal=document.getElementById('videoModal');
-  var video=document.getElementById('surveyVideo');
-  var videoOpenTab=document.getElementById('video-open-tab');
-  window.openVideoModal=function(src){
-    video.src = src;
-    if (videoOpenTab) { videoOpenTab.href = src; }
-    video.load();
-    try { video.play(); } catch(e) { console.warn('Autoplay blocked:', e); }
-    modal.hidden=false; document.body.style.overflow='hidden';
-    document.addEventListener('keydown', escHandler);
-  };
-  window.closeVideoModal=function(){
-    modal.hidden=true; video.pause(); video.currentTime=0;
-    document.body.style.overflow=''; document.removeEventListener('keydown', escHandler);
-  };
-  function escHandler(e){ if(e.key==='Escape') closeVideoModal(); }
-  document.addEventListener('click',function(e){
-    if(e.target && e.target.id==='videoModal'){ closeVideoModal(); }
-  });
-})();
-</script>
-</body>
+
+<script defer="True" src="app.js"></script></body>
 </html>
