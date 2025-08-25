@@ -483,39 +483,79 @@
 })();
 </script>
 <script>
-// Mobile first-tap fix for service cards:
-// On touch/pointer devices, the first tap often only triggers :hover.
-// This handler opens the card on the *first* tap by programmatically clicking
-// the inner link that your existing scripts use.
+// Robust mobile one-tap opener for service cards (Insurance Claim / Realtor Add-On)
 (function(){
-  function openCard(card){
-    // Try the explicit link inside the card (existing behavior)
-    var link = card.querySelector('.hoverlink a, .service-details h3 a, a[data-open]');
-    if (link) {
-      // Fire a synthetic click so any attached handlers run
-      try {
-        link.dispatchEvent(new MouseEvent('click', {bubbles:true, cancelable:true, view: window}));
-      } catch(e) {
-        link.click();
-      }
-      return true;
+  var isTouch = window.matchMedia && window.matchMedia('(hover: none)').matches;
+
+  if (!isTouch) return; // desktop unaffected
+
+  // Candidate selectors for your inner "open" links (lightbox/gallery/button)
+  var LINK_SEL = [
+    '.hoverlink a',
+    'a[data-fancybox]',
+    'a[data-toggle="lightbox"]',
+    'a[data-pswp]',
+    'a[rel*="lightbox"]',
+    '.service-details h3 a',
+    'a.view',
+    'a[href$=".jpg"]',
+    'a[href$=".jpeg"]',
+    'a[href$=".png"]',
+    'a[href$=".webp"]',
+    'a[href*="SampleInspectionReport"]',
+    'a[href*="Report"]',
+    'a[href*="Claim"]'
+  ].join(',');
+
+  // Card containers we consider tappable
+  var CARD_SEL = [
+    'li.report-card',
+    '.service-wrap .col-md-4, .service-wrap .col-md-6, .service-wrap .col-sm-6',
+    '.service-grid .service-image',
+    '.service-image'
+  ].join(',');
+
+  function findCard(el){
+    while (el && el !== document.body) {
+      if (el.matches && el.matches(CARD_SEL)) return el;
+      el = el.parentNode;
     }
-    return false;
+    return null;
   }
-  function handler(e){
+
+  function findLink(card){
+    if (!card) return null;
+    // Prefer explicit hoverlink/lightbox anchors
+    var link = card.querySelector(LINK_SEL);
+    if (link) return link;
+    // Fallback: first anchor inside the card
+    return card.querySelector('a[href]');
+  }
+
+  function onPointerUp(e){
     var t = e.target;
-    if (!t || !t.closest) return;
-    var card = t.closest('li.report-card');
+    var card = findCard(t);
     if (!card) return;
-    // On touch-like devices, prevent the initial tap from just setting :hover
-    if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
-      e.preventDefault();
-      e.stopPropagation();
-      openCard(card);
+
+    // Prevent the first tap from just toggling CSS :hover overlays
+    e.preventDefault();
+    e.stopPropagation();
+
+    var a = findLink(card);
+    if (!a) return;
+
+    // Ensure the link is clickable through overlays
+    try {
+      a.dispatchEvent(new MouseEvent('click', {bubbles:true, cancelable:true, view: window}));
+    } catch(_) {
+      a.click();
     }
   }
-  // Use pointerup for widest compatibility (covers touch & pen)
-  document.addEventListener('pointerup', handler, {passive:false});
+
+  // Use capture to beat other handlers that might swallow the event
+  document.addEventListener('pointerup', onPointerUp, {passive:false, capture:true});
+  // Also catch touchend for older Androids without pointer events
+  document.addEventListener('touchend', onPointerUp, {passive:false, capture:true});
 })();
 </script>
 </body>
