@@ -101,13 +101,6 @@
 }
 .serviceList .hoverhint{ display:inline-block !important; }
 </style>
-<style>
-/* On touch devices, allow tapping the inner link without a "hover-only" first tap */
-@media (hover: none) {
-  .service-image .hoverlink { pointer-events: none; }
-  .service-image .hoverlink a, .service-image .hoverlink .icon { pointer-events: auto; }
-}
-</style>
 </head>
 <body>
 <!-- Header start -->
@@ -402,79 +395,20 @@
   }
 </script>
 <script>
-// Progressive responsive images (safe fallback).
-// Looks for <img class="ri" data-src="..."> and swaps to smaller WebP/JPEG
-// variants on mobile if those files exist.
 (function () {
-  function pickSize() {
-    var w = Math.min(window.innerWidth || 0, screen.width || 0);
-    if (w <= 520) return 480;
-    if (w <= 900) return 768;
-    return 0; // keep original on larger viewports
-  }
-  function makeCandidates(src, size) {
-    // Example: images/five.jpg -> images/five-480.webp and images/five-480.jpg
-    var dot = src.lastIndexOf('.');
-    if (dot < 0) return [];
-    var base = src.slice(0, dot);
-    var ext = src.slice(dot + 1).toLowerCase();
-    return [base + '-' + size + '.webp', base + '-' + size + '.' + ext];
-  }
-  function preload(url) {
-    return new Promise(function (resolve, reject) {
-      var img = new Image();
-      img.onload = function(){ resolve(url); };
-      img.onerror = reject;
-      img.src = url;
-    });
-  }
-  function swap(img, url) {
-    // keep original as data-src for future resizes
-    img.setAttribute('data-src-original', img.src);
-    img.src = url;
-  }
-  function trySwap(img, size) {
-    var src = img.getAttribute('data-src') || img.src;
-    var candidates = makeCandidates(src, size);
-    // Try WebP first, then same-ext fallback; only swap if preload succeeds
-    preload(candidates[0])
-      .then(function(){ swap(img, candidates[0]); })
-      .catch(function(){
-        preload(candidates[1])
-          .then(function(){ swap(img, candidates[1]); })
-          .catch(function(){ /* leave original src */ });
-      });
-  }
-  function init() {
-    var size = pickSize();
-    if (!size) return;
-    var imgs = document.querySelectorAll('img.ri');
-    for (var i = 0; i < imgs.length; i++) {
-      // Avoid above-the-fold jank: only process once the page is interactive
-      trySwap(imgs[i], size);
-    }
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-  // Optional: re-run on orientation change
-  window.addEventListener('orientationchange', function(){
-    init();
-  });
+  function pickSize() { var w = Math.min(window.innerWidth||0, screen.width||0); if (w<=520) return 480; if (w<=900) return 768; return 0; }
+  function makeCandidates(src, size) { var dot = src.lastIndexOf('.'); if (dot<0) return []; var base = src.slice(0,dot); var ext = src.slice(dot+1).toLowerCase(); return [base+'-'+size+'.webp', base+'-'+size+'.'+ext]; }
+  function preload(url){ return new Promise(function(res,rej){ var i=new Image(); i.onload=function(){res(url)}; i.onerror=rej; i.src=url; }); }
+  function swap(img,url){ img.setAttribute('data-src-original', img.src); img.src=url; }
+  function trySwap(img,size){ var src=img.getAttribute('data-src')||img.src; var c=makeCandidates(src,size); preload(c[0]).then(function(){swap(img,c[0])}).catch(function(){preload(c[1]).then(function(){swap(img,c[1])}).catch(function(){})}); }
+  function init(){ var s=pickSize(); if(!s) return; var imgs=document.querySelectorAll('img.ri'); for(var i=0;i<imgs.length;i++) trySwap(imgs[i],s); }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
+  window.addEventListener('orientationchange', function(){ init(); });
 })();
 </script>
 <script>
-// Defer heavy JS work until after onload to reduce forced reflow during paint
 (function(){
-  function run() {
-    try {
-      // Place any plugin initializations that were running at DOMContentLoaded here if needed.
-      // We intentionally leave this empty since existing files handle init;
-      // moving to idle time helps avoid layout thrash during first render.
-    } catch(e){}
-  }
+  function run(){ try { /* move heavy init here if needed */ } catch(e){} }
   if ('requestIdleCallback' in window) {
     window.addEventListener('load', function(){ requestIdleCallback(run, {timeout: 2000}); });
   } else {
@@ -483,54 +417,41 @@
 })();
 </script>
 <script>
-// Aggressive one-tap fix on touch devices: trigger the card's own click handler.
 (function(){
-  var isTouch = window.matchMedia && window.matchMedia('(hover: none)').matches;
-  if (!isTouch) return;
-
-  // Debounce to avoid double-firing if native click also arrives
-  var lastFire = 0;
+  var hasTouch = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if (!hasTouch) return;
+  var DOWN = {};
   function now(){ return (performance && performance.now) ? performance.now() : Date.now(); }
-
-  function findCard(el){
-    while (el && el !== document.body) {
-      if (el.matches && (el.matches('li.report-card') || el.matches('.report-card'))) return el;
-      el = el.parentNode;
-    }
-    return null;
-  }
-
-  function fireCardClick(card){
-    // Mark timestamp to prevent double-open
-    card.__tapTime = now();
-    // Fire native click first
-    try {
-      card.dispatchEvent(new MouseEvent('click', {bubbles:true, cancelable:true, view: window}));
-    } catch(_) {
-      (card.click && card.click());
-    }
-    // Fire jQuery click if present (covers delegated handlers like $(doc).on('click', 'li.report-card', ...))
-    if (window.jQuery) {
-      try { window.jQuery(card).trigger('click'); } catch(_) {}
-    }
-  }
-
-  function onTouchEnd(e){
-    var t = e.target;
-    var card = findCard(t);
+  function dist(a,b){ var dx=a.x-b.x, dy=a.y-b.y; return Math.sqrt(dx*dx+dy*dy); }
+  var MAX_MOVE=10, MAX_TIME=450, MAX_SCROLL=8;
+  function onPointerDown(e){
+    if (e.pointerType && e.pointerType !== 'touch') return;
+    var t=e.target, card=t.closest && t.closest('li.report-card, .report-card');
     if (!card) return;
-
-    // If a recent synthetic click was just fired, skip
-    if (card.__tapTime && (now() - card.__tapTime) < 300) return;
-
-    // Do NOT preventDefault to allow any plugin to proceed;
-    // instead, ensure the card's own handler runs immediately.
-    fireCardClick(card);
+    DOWN[e.pointerId||0]={t:now(),x:e.clientX,y:e.clientY,sy:window.pageYOffset||document.documentElement.scrollTop||0,card:card};
   }
-
-  // Capture to beat overlays/inner anchors; use both pointer and touch for coverage
-  document.addEventListener('pointerup', onTouchEnd, {capture:true, passive:true});
-  document.addEventListener('touchend', onTouchEnd, {capture:true, passive:true});
+  function onPointerUp(e){
+    if (e.pointerType && e.pointerType !== 'touch') return;
+    var rec=DOWN[e.pointerId||0]; delete DOWN[e.pointerId||0];
+    if(!rec) return;
+    var dur=now()-rec.t, mv=dist({x:e.clientX,y:e.clientY},{x:rec.x,y:rec.y});
+    var sdy=Math.abs((window.pageYOffset||document.documentElement.scrollTop||0)-rec.sy);
+    if (dur>MAX_TIME || mv>MAX_MOVE || sdy>MAX_SCROLL) return;
+    e.preventDefault(); e.stopPropagation();
+    try { rec.card.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window})); } catch(_) { rec.card.click && rec.card.click(); }
+    if (window.jQuery) { try { window.jQuery(rec.card).trigger('click'); } catch(_){} }
+  }
+  if (window.PointerEvent) {
+    document.addEventListener('pointerdown', onPointerDown, {capture:true, passive:true});
+    document.addEventListener('pointerup', onPointerUp, {capture:true, passive:false});
+  } else {
+    document.addEventListener('touchstart', function(e){ var t=e.changedTouches[0]; if(!t) return;
+      onPointerDown({pointerId:0, clientX:t.clientX, clientY:t.clientY, target:e.target, pointerType:'touch'});
+    }, {capture:true, passive:true});
+    document.addEventListener('touchend', function(e){ var t=e.changedTouches[0]; if(!t) return;
+      onPointerUp({pointerId:0, clientX:t.clientX, clientY:t.clientY, target:e.target, pointerType:'touch', preventDefault:function(){e.preventDefault();}, stopPropagation:function(){e.stopPropagation();}});
+    }, {capture:true, passive:false});
+  }
 })();
 </script>
 </body>
