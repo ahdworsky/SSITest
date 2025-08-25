@@ -144,7 +144,7 @@
 <h2>Our <span>Services</span></h2>
 <ul class="row serviceList">
 <li class="report-card col-md-6 col-sm-6" data-action="snapshot" data-index="0" tabindex="0">
-<div class="service-image"><img alt="Roof Snapshot preview" src="images/one.jpg"/>
+<div class="service-image"><img loading="lazy" alt="Roof Snapshot preview" src="images/one.jpg"/>
 <div class="hoverlink">
 <div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span>
@@ -157,7 +157,7 @@
 </div>
 </li>
 <li class="report-card col-md-6 col-sm-6" data-action="report" data-index="0" tabindex="0">
-<div class="service-image"><img alt="Detailed Roof Report preview" src="images/two.jpg"/><div class="hoverlink"><div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div></div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
+<div class="service-image"><img loading="lazy" alt="Detailed Roof Report preview" src="images/two.jpg"/><div class="hoverlink"><div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div></div><span aria-hidden="true" class="hoverhint"><span class="click">Click to view</span></span></div>
 <div class="service-details">
 <h3><a href="javascript:void(0)">Detailed Roof Report</a></h3>
 <p>In-depth drone imaging documenting wear or damage—great for buyers or sellers.</p>
@@ -168,7 +168,7 @@
 </ul>
 <ul class="row serviceList second">
 <li class="report-card col-md-4 col-sm-6" data-action="video" data-src="images/LandSurveyFinal.mp4" tabindex="0">
-<div class="service-image"><img alt="Land Survey Flyover preview" src="images/five.jpg"/>
+<div class="service-image"><img loading="lazy" alt="Land Survey Flyover preview" src="images/five.jpg"/>
 <div class="hoverlink">
 <div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
@@ -181,7 +181,7 @@
 </div>
 </li>
 <li class="report-card col-md-4 col-sm-6" data-action="image" data-src="images/insurance-claim.png" tabindex="0">
-<div class="service-image"><img src="images/six.jpg" alt="Insurance claim documentation preview"/>
+<div class="service-image"><img loading="lazy" src="images/six.jpg" alt="Insurance claim documentation preview"/>
 <div class="hoverlink">
 <div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
@@ -194,7 +194,7 @@
 </div>
 </li>
 <li class="report-card col-md-4 col-sm-6" data-action="image" data-src="images/realtor-addon.png" tabindex="0">
-<div class="service-image"><img src="images/four.jpg" alt="Realtor marketing add-on preview"/>
+<div class="service-image"><img loading="lazy" src="images/four.jpg" alt="Realtor marketing add-on preview"/>
 <div class="hoverlink">
 <div class="icon"><a href="javascript:void(0)"><i aria-hidden="true" class="fa fa-link"></i></a><span class="tap">Tap to view</span></div>
 </div>
@@ -220,7 +220,7 @@
 <!-- <div class="readmore"><a href="#">Read More</a></div> -->
 </div>
 <div class="col-md-5">
-<div class="about-image"><img alt="" aria-hidden="true" role="presentation" src="images/feature-image-3.jpg"/></div>
+<div class="about-image"><img loading="lazy" alt="" aria-hidden="true" role="presentation" src="images/feature-image-3.jpg"/></div>
 </div>
 </div>
 </div>
@@ -330,7 +330,7 @@
 </div>
 </div>
 <div class="report-frame">
-<img alt="Sample Report page" id="report-image" src=""/>
+<img loading="lazy" alt="Sample Report page" id="report-image" src=""/>
 </div>
 <div aria-label="Page thumbnails" class="thumbs" id="report-thumbs"></div>
 </div>
@@ -344,7 +344,7 @@
 <div data-close="1" id="img-backdrop"></div>
 <figure aria-label="Image preview" aria-modal="true" id="img-modal" role="dialog">
 <button aria-label="Close" data-close="1" id="img-close" type="button">×</button>
-<img alt="Preview image" id="img-view" src=""/>
+<img loading="lazy" alt="Preview image" id="img-view" src=""/>
 <figcaption class="sr-only" id="img-caption">Preview</figcaption>
 </figure>
 </div>
@@ -381,5 +381,14 @@
   background:#fff; border:none; border-radius:50%; cursor:pointer; width:40px; height:40px; }
 </style>
 
-<script defer="True" src="js/app.js"></script></body>
+<script defer="True" src="js/app.js"></script><script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(function (err) {
+        console.warn('SW registration failed:', err);
+      });
+    });
+  }
+</script>
+</body>
 </html>
