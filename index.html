@@ -101,6 +101,13 @@
 }
 .serviceList .hoverhint{ display:inline-block !important; }
 </style>
+<style>
+/* On touch devices, allow tapping the inner link without a "hover-only" first tap */
+@media (hover: none) {
+  .service-image .hoverlink { pointer-events: none; }
+  .service-image .hoverlink a, .service-image .hoverlink .icon { pointer-events: auto; }
+}
+</style>
 </head>
 <body>
 <!-- Header start -->
@@ -473,6 +480,42 @@
   } else {
     window.addEventListener('load', function(){ setTimeout(run, 600); });
   }
+})();
+</script>
+<script>
+// Mobile first-tap fix for service cards:
+// On touch/pointer devices, the first tap often only triggers :hover.
+// This handler opens the card on the *first* tap by programmatically clicking
+// the inner link that your existing scripts use.
+(function(){
+  function openCard(card){
+    // Try the explicit link inside the card (existing behavior)
+    var link = card.querySelector('.hoverlink a, .service-details h3 a, a[data-open]');
+    if (link) {
+      // Fire a synthetic click so any attached handlers run
+      try {
+        link.dispatchEvent(new MouseEvent('click', {bubbles:true, cancelable:true, view: window}));
+      } catch(e) {
+        link.click();
+      }
+      return true;
+    }
+    return false;
+  }
+  function handler(e){
+    var t = e.target;
+    if (!t || !t.closest) return;
+    var card = t.closest('li.report-card');
+    if (!card) return;
+    // On touch-like devices, prevent the initial tap from just setting :hover
+    if (window.matchMedia && window.matchMedia('(hover: none)').matches) {
+      e.preventDefault();
+      e.stopPropagation();
+      openCard(card);
+    }
+  }
+  // Use pointerup for widest compatibility (covers touch & pen)
+  document.addEventListener('pointerup', handler, {passive:false});
 })();
 </script>
 </body>
