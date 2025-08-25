@@ -483,79 +483,54 @@
 })();
 </script>
 <script>
-// Robust mobile one-tap opener for service cards (Insurance Claim / Realtor Add-On)
+// Aggressive one-tap fix on touch devices: trigger the card's own click handler.
 (function(){
   var isTouch = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if (!isTouch) return;
 
-  if (!isTouch) return; // desktop unaffected
-
-  // Candidate selectors for your inner "open" links (lightbox/gallery/button)
-  var LINK_SEL = [
-    '.hoverlink a',
-    'a[data-fancybox]',
-    'a[data-toggle="lightbox"]',
-    'a[data-pswp]',
-    'a[rel*="lightbox"]',
-    '.service-details h3 a',
-    'a.view',
-    'a[href$=".jpg"]',
-    'a[href$=".jpeg"]',
-    'a[href$=".png"]',
-    'a[href$=".webp"]',
-    'a[href*="SampleInspectionReport"]',
-    'a[href*="Report"]',
-    'a[href*="Claim"]'
-  ].join(',');
-
-  // Card containers we consider tappable
-  var CARD_SEL = [
-    'li.report-card',
-    '.service-wrap .col-md-4, .service-wrap .col-md-6, .service-wrap .col-sm-6',
-    '.service-grid .service-image',
-    '.service-image'
-  ].join(',');
+  // Debounce to avoid double-firing if native click also arrives
+  var lastFire = 0;
+  function now(){ return (performance && performance.now) ? performance.now() : Date.now(); }
 
   function findCard(el){
     while (el && el !== document.body) {
-      if (el.matches && el.matches(CARD_SEL)) return el;
+      if (el.matches && (el.matches('li.report-card') || el.matches('.report-card'))) return el;
       el = el.parentNode;
     }
     return null;
   }
 
-  function findLink(card){
-    if (!card) return null;
-    // Prefer explicit hoverlink/lightbox anchors
-    var link = card.querySelector(LINK_SEL);
-    if (link) return link;
-    // Fallback: first anchor inside the card
-    return card.querySelector('a[href]');
+  function fireCardClick(card){
+    // Mark timestamp to prevent double-open
+    card.__tapTime = now();
+    // Fire native click first
+    try {
+      card.dispatchEvent(new MouseEvent('click', {bubbles:true, cancelable:true, view: window}));
+    } catch(_) {
+      (card.click && card.click());
+    }
+    // Fire jQuery click if present (covers delegated handlers like $(doc).on('click', 'li.report-card', ...))
+    if (window.jQuery) {
+      try { window.jQuery(card).trigger('click'); } catch(_) {}
+    }
   }
 
-  function onPointerUp(e){
+  function onTouchEnd(e){
     var t = e.target;
     var card = findCard(t);
     if (!card) return;
 
-    // Prevent the first tap from just toggling CSS :hover overlays
-    e.preventDefault();
-    e.stopPropagation();
+    // If a recent synthetic click was just fired, skip
+    if (card.__tapTime && (now() - card.__tapTime) < 300) return;
 
-    var a = findLink(card);
-    if (!a) return;
-
-    // Ensure the link is clickable through overlays
-    try {
-      a.dispatchEvent(new MouseEvent('click', {bubbles:true, cancelable:true, view: window}));
-    } catch(_) {
-      a.click();
-    }
+    // Do NOT preventDefault to allow any plugin to proceed;
+    // instead, ensure the card's own handler runs immediately.
+    fireCardClick(card);
   }
 
-  // Use capture to beat other handlers that might swallow the event
-  document.addEventListener('pointerup', onPointerUp, {passive:false, capture:true});
-  // Also catch touchend for older Androids without pointer events
-  document.addEventListener('touchend', onPointerUp, {passive:false, capture:true});
+  // Capture to beat overlays/inner anchors; use both pointer and touch for coverage
+  document.addEventListener('pointerup', onTouchEnd, {capture:true, passive:true});
+  document.addEventListener('touchend', onTouchEnd, {capture:true, passive:true});
 })();
 </script>
 </body>
